@@ -1,0 +1,111 @@
+/* ---------- colors & basics ---------- */
+:root {
+  --paper: #f4efe4;
+  --ink: #1b1b1b;
+  --accent: #17bdff;
+  --tape: #fd4aca;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Special Elite", "Courier New", monospace;
+  line-height: 1.7;
+}
+
+/* ---------- header ---------- */
+.masthead {
+  text-align: center;
+  padding: 2rem 1rem 1rem;
+  border-bottom: 3px dashed var(--ink);
+}
+.masthead h1 {
+  font-family: "Rubik Mono One", sans-serif;
+  font-size: 100px;
+  margin: 0;
+  letter-spacing: -2px;
+}
+.masthead p { margin: .5rem 0 0; }
+
+/* ---------- layout: tabs on the side, page on the right ---------- */
+.zine {
+  display: flex;
+  gap: 2rem;
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* ---------- tabs ---------- */
+.tabs {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  width: 230px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 1rem;
+  align-self: flex-start;
+}
+.tabs a {
+  display: block;
+  padding: .5rem .8rem;
+  background: #fff;
+  border: 2px solid var(--ink);
+  color: var(--ink);
+  text-decoration: none;
+  transition: transform .15s, background .15s;
+}
+
+.tabs a:hover {
+  background: var(--tape);
+}
+
+/* highlight the tab that's open */
+body:has(#p1:target)  a[href="#p1"],
+body:has(#p2:target)  a[href="#p2"],
+body:has(#p3:target)  a[href="#p3"],
+body:has(#p4:target)  a[href="#p4"],
+body:has(#p5:target)  a[href="#p5"],
+body:has(#p6:target)  a[href="#p6"],
+body:has(#p7:target)  a[href="#p7"],
+body:has(#p8:target)  a[href="#p8"],
+body:has(#p9:target)  a[href="#p9"],
+body:has(#p10:target) a[href="#p10"],
+body:has(#p11:target) a[href="#p11"],
+body:has(#p12:target) a[href="#p12"],
+body:has(#p13:target) a[href="#p13"],
+body:has(#p14:target) a[href="#p14"],
+body:has(#p15:target) a[href="#p15"] {
+  background: var(--accent);
+  color: #fff;
+}
+
+/* ---------- pages ---------- */
+.pages { flex: 1; min-width: 0; }
+
+.pages article {
+  display: none;
+  position: relative;
+  background: #fff;
+  border: 2px solid var(--ink);
+  padding: 2.5rem 2rem;
+  scroll-margin-top: 1rem;
+}
+
+/* show the page whose tab was clicked */
+.pages article:target { display: block; }
+
+/* if nothing is clicked yet, show page 1 */
+.pages:not(:has(article:target)) article:first-child { display: block; }
+
+.pages h2 {
+  font-family: "Rubik Mono One", sans-serif;
+  font-size: 1.8rem;
+  margin-top: 0;
+  color: var(--accent);
+}
+
